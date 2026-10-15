@@ -1,0 +1,11 @@
+{
+  "name": "Счётчик рядов",
+  "short_name": "Ряды",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fbf7f4",
+  "theme_color": "#b5487a",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

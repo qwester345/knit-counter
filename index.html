@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Счётчик рядов</title>
+  <meta name="theme-color" content="#b5487a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Шапка: выбор проекта и кнопка настроек -->
+  <header class="topbar">
+    <select id="projectSelect" aria-label="Проект"></select>
+    <button id="settingsBtn" class="icon-btn" aria-label="Настройки проекта">⚙︎</button>
+  </header>
+
+  <main>
+    <!-- Главный счётчик: ряд изделия -->
+    <section class="main-counter">
+      <div class="label">Ряд изделия</div>
+      <div class="big"><span id="rowNow">1</span><span class="total"> / <span id="rowTotal">82</span></span></div>
+      <div class="progress"><div id="progressBar"></div></div>
+      <div id="doneMsg" class="done" hidden>Готово! Все ряды связаны 🎉</div>
+    </section>
+
+    <!-- Сюда app.js вставляет карточки паттернов -->
+    <section id="patterns" class="patterns"></section>
+  </main>
+
+  <!-- Нижняя панель с большими кнопками: удобно жать большим пальцем -->
+  <footer class="controls">
+    <button id="minusBtn" class="btn-minus" aria-label="Назад на ряд">−1</button>
+    <button id="plusBtn" class="btn-plus">+1 ряд</button>
+  </footer>
+
+  <!-- Окно настроек проекта (стандартный элемент <dialog>) -->
+  <dialog id="settings">
+    <form method="dialog" id="settingsForm">
+      <h2>Настройки проекта</h2>
+
+      <label>Название
+        <input id="projName" required maxlength="40">
+      </label>
+      <label>Всего рядов
+        <input id="projTotal" type="number" min="1" max="9999" required>
+      </label>
+
+      <h3>Паттерны <small>(до 10)</small></h3>
+      <div class="pattern-head"><span>Название</span><span>Высота</span><span>С ряда</span><span></span></div>
+      <div id="patternRows"></div>
+      <button type="button" id="addPatternBtn" class="secondary">+ Добавить паттерн</button>
+
+      <div class="dialog-actions">
+        <button type="submit" value="save">Сохранить</button>
+        <button type="submit" value="cancel" class="secondary" formnovalidate>Отмена</button>
+      </div>
+
+      <hr>
+      <div class="dialog-actions">
+        <button type="button" id="newProjectBtn" class="secondary">Новый проект</button>
+        <button type="button" id="resetBtn" class="secondary">Начать с 1-го ряда</button>
+        <button type="button" id="deleteProjectBtn" class="danger">Удалить проект</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>
